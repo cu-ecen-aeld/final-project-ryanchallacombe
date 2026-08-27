@@ -9,6 +9,20 @@
     - installed opencv using quick install method detailed here: https://opencv-opencv.mintlify.app/installation#linux
 
 
+### 8/21-8/27/2026
+- research potential project ideas
+
+### 8/27/2026
+## repo setup on VM
+Start in `/home/ryan/projects/final-project-ryanchallacombe`
+Run:
+```
+git remote add buildroot-base https://github.com/cu-ecen-5013/buildroot-assignments-base.git
+git fetch buildroot-base
+git merge buildroot-base/master # resulted in conflict so did....
+git config pull.rebase false
+git pull buildroot-base master --allow-unrelated-histories
+```
 
 
 
