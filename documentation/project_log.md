@@ -46,5 +46,13 @@ Please move or remove them before you merge.
 Aborting
 ```
 Let's move the README.md file temporarily. 
+`git merge buildroot-base/hw-rpi`
+
+Then I did an add / commit / push. 
+
+# Step 3
+Modified the shared.sh file per this link: https://github.com/cu-ecen-aeld/rpi4_buildroot/blob/master/shared.sh
+
+
 
 ## Notes
