@@ -108,4 +108,40 @@ BR2_PACKAGE_HOST_MTOOLS=y
 ```
 Found the issue. The shared.sh script was causing the save-config.sh script to write to /home/ryan/projects/final-project-ryanchallacombe/base_external/configs/aesd_qemu_deconfig. I updated shared.sh to save to aesd_raspberrypi4_64_defconfig in that directory. 
 
-TODO: compare https://github.com/cu-ecen-aeld/final-project-abbottwhitley/blob/master/base_external/configs/aesd_pi4_defconfig with mine 
+TODO: compare https://github.com/cu-ecen-aeld/final-project-abbottwhitley/blob/master/base_external/configs/aesd_pi4_defconfig with mine
+
+- Do storage check before building: 
+```
+ryan@Ubuntu22:~/projects/final-project-ryanchallacombe$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           776M  1.8M  774M   1% /run
+/dev/sda3        99G   62G   32G  67% /
+tmpfs           3.8G  100M  3.7G   3% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           3.8G     0  3.8G   0% /run/qemu
+/dev/sda2       512M  6.1M  506M   2% /boot/efi
+tmpfs           776M  164K  775M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/ryan/VBox_GAs_7.2.2
+```
+After some cleanup:
+```
+ryan@Ubuntu22:~/projects$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           776M  1.8M  774M   1% /run
+/dev/sda3        99G   39G   55G  42% /
+tmpfs           3.8G   60M  3.8G   2% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           3.8G     0  3.8G   0% /run/qemu
+/dev/sda2       512M  6.1M  506M   2% /boot/efi
+tmpfs           776M  164K  775M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/ryan/VBox_GAs_7.2.2
+```
+- reran make menuconfig
+    - added python3 with external package socketio package
+    - used default core packages
+    - added wireless tools
+
+..Phew... I think we are ready for the first build attempt. 
+eh... no, let's save the VM state first, then build...
+
+# Step 5
