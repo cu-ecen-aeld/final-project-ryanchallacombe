@@ -2,6 +2,9 @@
 
 ![alt text](image.png)
 
+## VI usage
+
+
 ## Research + links
 ### Class Hardware support
 - https://github.com/cu-ecen-aeld/aesd-assignments/wiki/Supported-Hardware-Platforms
@@ -9,11 +12,14 @@
 - https://github.com/cu-ecen-aeld/buildroot-assignments-base/wiki/Raspberry-Pi-Hardware-Support
 - https://github.com/cu-ecen-aeld/buildroot-assignments-base/wiki/Flashing-Images-to-SDCard
 
-
 ### Buildroot setup
 - https://github.com/cu-ecen-aeld/buildroot-assignments-base/wiki/Setting-up-Buildroot-for-Hardware-Builds
     - notes on how to configure the scripts for a build on physical hardware. 
     - Some rpi4 specific notes
+
+## RPI hardware hints
+- https://github.com/cu-ecen-aeld/buildroot-assignments-base/wiki/Raspberry-Pi-Hardware-Hints
+    - includes how to setup config.txt file, i2c, spi, etc.
 
 ## Project ideas: Research + links
 ### OpenCV

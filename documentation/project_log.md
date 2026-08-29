@@ -108,8 +108,6 @@ BR2_PACKAGE_HOST_MTOOLS=y
 ```
 Found the issue. The shared.sh script was causing the save-config.sh script to write to /home/ryan/projects/final-project-ryanchallacombe/base_external/configs/aesd_qemu_deconfig. I updated shared.sh to save to aesd_raspberrypi4_64_defconfig in that directory. 
 
-TODO: compare https://github.com/cu-ecen-aeld/final-project-abbottwhitley/blob/master/base_external/configs/aesd_pi4_defconfig with mine
-
 - Do storage check before building: 
 ```
 ryan@Ubuntu22:~/projects/final-project-ryanchallacombe$ df -h
@@ -136,6 +134,7 @@ tmpfs           3.8G     0  3.8G   0% /run/qemu
 tmpfs           776M  164K  775M   1% /run/user/1000
 /dev/sr0         51M   51M     0 100% /media/ryan/VBox_GAs_7.2.2
 ```
+- Compared https://github.com/cu-ecen-aeld/final-project-abbottwhitley/blob/master/base_external/configs/aesd_pi4_defconfig with mine. as a result made the following updates:
 - reran make menuconfig
     - added python3 with external package socketio package
     - used default core packages
@@ -145,3 +144,47 @@ tmpfs           776M  164K  775M   1% /run/user/1000
 eh... no, let's save the VM state first, then build...
 
 # Step 5
+- Build took about 2 hours
+- the total `df -h` output for the main disk is `/dev/sda3        99G   49G   45G  52% /`
+- The is a file called `sdcard.img` in the location `/home/ryan/projects/final-project-ryanchallacombe/buildroot/output/images`
+
+-- Procedure to get in on the SD card
+After spending a lot of time trying to get VBox to mount the sd card, i gave up and decided to do it outside of the VM using Windows. 
+
+I created a shared folder on the VM at: `/media/sf_VBox_shared_folder`
+
+The image can be placed in there. In windows, use the shared folder location: `C:\Users\ryanc\VBox_shared_folder`
+
+Use the Rufus application to write it to the sd card. 
+
+### 8/28/2026
+## Testing first image
+Boots up to a shell. All in all it looks like good progress. 
+
+Issues: 
+- ip addr shows no wlan connection
+
+TODO:
+- does the rpi conf file need changed to support wifi, ssh?
+- add vim or nano 
+
+# debugging
+Was able to get it working by 
+1. Rerunning the wpa supplicant command as seen below:
+    reference: https://wiki.archlinux.org/title/Wpa_supplicant and https://www.baeldung.com/linux/connect-network-cli
+2. Manually assigning an ip addr based on knowledge of laptop ip addr using procedure here:
+    https://wiki.archlinux.org/title/Network_configuration#IP_addresses
+
+# solution
+Found the root issue! The interfaces file in /etc/network was the default one from buildroot b/c the one in the rootfs overlay was named interfaces.txt. The system was dalling the buildroot file, which included no wlan setup. 
+
+So I scp'd the correct file over as below, and it worked!
+scp /home/ryan/projects/final-project-ryanchallacombe/base_external/rootfs_overlay/etc/network/interfaces root@192.168.86.100:/etc/network/interfaces2
+
+Restarted the system. Note that it took a couple minutes to boot and obtain it's ip addr. 
+
+
+
+
+
+
