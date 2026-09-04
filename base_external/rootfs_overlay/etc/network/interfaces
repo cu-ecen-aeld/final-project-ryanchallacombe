@@ -7,8 +7,15 @@ iface eth0 inet dhcp
     hostname $(hostname)
 
 auto wlan0
-iface wlan0 inet dhcp
+iface wlan0 inet static
+    address 192.168.86.100
+    netmask 255.255.255.0
+    network 192.168.86.1
     pre-up wpa_supplicant -B -Dnl80211 -iwlan0 -c /etc/wpa_supplicant.conf
     post-down killall -q wpa_supplicant
     wait-delay 15
+
 iface default inet dhcp
+
+# reference:    https://www.cyberciti.biz/tips/howto-ubuntu-linux-convert-dhcp-network-configuration-to-static-ip-configuration.html
+#               https://www.cyberciti.biz/faq/setting-up-an-network-interfaces-file/

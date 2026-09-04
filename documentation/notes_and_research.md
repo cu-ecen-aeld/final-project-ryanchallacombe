@@ -2,7 +2,12 @@
 
 ![alt text](image.png)
 
-## VI usage
+## Pico SDK documentation
+https://www.raspberrypi.com/documentation/pico-sdk/index_doxygen.html#raspberry-pi-pico-sdk
+
+# Linux: Links for applying a static IP addr
+https://www.cyberciti.biz/faq/setting-up-an-network-interfaces-file/
+https://www.cyberciti.biz/tips/howto-ubuntu-linux-convert-dhcp-network-configuration-to-static-ip-configuration.html
 
 
 ## Research + links

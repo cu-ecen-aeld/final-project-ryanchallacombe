@@ -164,9 +164,6 @@ Boots up to a shell. All in all it looks like good progress.
 Issues: 
 - ip addr shows no wlan connection
 
-TODO:
-- does the rpi conf file need changed to support wifi, ssh?
-- add vim or nano 
 
 # debugging
 Was able to get it working by 
@@ -182,6 +179,22 @@ So I scp'd the correct file over as below, and it worked!
 scp /home/ryan/projects/final-project-ryanchallacombe/base_external/rootfs_overlay/etc/network/interfaces root@192.168.86.100:/etc/network/interfaces2
 
 Restarted the system. Note that it took a couple minutes to boot and obtain it's ip addr. 
+
+TODO:
+- add aesd assignments package per a9 to build. Goal is to verify that it will run. 
+- add vim or nano 
+
+### 9/3/2026
+# RPI4
+-Updated `interfaces` file to set a static ip addr for the rpi4 of `address 192.168.86.100`
+    It assumes that the network id is `address 192.168.86.1`
+
+# Pico W
+- Compiled example program picow_tcp_server.c into picow_tcp_server_poll and picow_tcp_server_background.
+- Loaded one (can't remember which) onto the pico w
+- Ran the server test with the rpi4 and pico talking to each other. Success!
+
+
 
 
 
