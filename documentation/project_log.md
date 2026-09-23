@@ -195,7 +195,33 @@ TODO:
 - Ran the server test with the rpi4 and pico talking to each other. Success!
 
 
+### 9/5-9/12
+# Pico W
+- Reviewed LIS3DH datasheet and example code. Investigated various accelerometer settings
+- Planned the interface protocol / messaging between the RPI4 and the Pico
 
+
+### 9/13-9/20
+# Pico W
+- Implemented LIS3DH to Pico interrupt on shock detection.
+- Reviewed in depth the lwip (Light Weight IP) library and example code for a TCP server on the Pico. Ran the examples with my laptop as the client using a python script. 
+- Began integration of the Pico TCP server code.
+- Setup the structure for a Finite State Machine (FSM) to run on the Pico. 
+Issues:
+- need to pass float values to the client. This is tricky with python, but should be straightforward with a C application.
+
+
+### 9/21-9/22
+# Pico W
+- Continued development and first testing of the FSM using a python client script
+Issues:
+- Sampled accel values are duplicated. Need to revied settings for sample time vs loop time when captuing data. Likely that we are looping faster than the lis3dh captures data.
+- Need to pass timestamps or some type of time references to the client so that data processing can be done.
+Resolution:
+- added 
+
+# Client
+- Developed a first pass at the client script and tested locally using the Ubuntu VM as the client. 
 
 
 

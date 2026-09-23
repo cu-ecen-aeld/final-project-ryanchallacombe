@@ -1,10 +1,10 @@
-<<<<<<< HEAD
-## README
-... Enter readme stuff here ...
-=======
-# Overview
+# final-project-ryanchallacombe
+The repository includes documentation and code for the final project of Advanced Embedded Linux Development class (ECEA 5305-5307). 
 
-This repository contains assignment starter code for buildroot based assignments for the course Advanced Embedded Software Design, ECEN 5713
+[Project Overview Wiki](https://github.com/cu-ecen-aeld/final-project-ryanchallacombe/wiki/Project-Overview)
 
-It also contains instructions related to modifying your buildroot project to use with supported hardware platforms.  See [this wiki page](https://github.com/cu-ecen-5013/buildroot-assignments-base/wiki/Supported-Hardware) for details.
->>>>>>> fe825128359e3913775bd5241522ec420c6cf10a
+[Project Schedule Page](https://github.com/cu-ecen-aeld/final-project-ryanchallacombe/wiki/Schedule-Page)
+
+[Buildroot repo (this repo)](https://github.com/cu-ecen-aeld/final-project-ryanchallacombe)
+
+[Application Code repo](https://github.com/ryanchallacombe/ecea5307-final-project)
