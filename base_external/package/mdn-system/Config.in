@@ -1,0 +1,6 @@
+
+config BR2_PACKAGE_MDN_SYSTEM
+	bool "mdn-system"
+	help
+	  Includes the client application for the motion detection and notification system.
+	  ECEA5307 final project.

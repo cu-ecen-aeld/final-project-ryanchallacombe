@@ -224,6 +224,24 @@ Resolution:
 - Developed a first pass at the client script and tested locally using the Ubuntu VM as the client. 
 
 
+### 10/27/2026
+# Pico W
+- updated pico_motion_detector (application used for sandboxing) with updated LSI3DH settings. 
 
+### 11/6/2026
+- Updated both Client code and FSM
+- Initial integration testing with just 1 sampled value sent from the pico
+# Client shown below
+![alt text](client_20261106.png) 
+# Server shown below
+![alt text](server_20261106.png)
 
+### 11/7-11/8
+- Ton on work on the client. 
+- Initial integration testing with the dryer went great!
+
+### 11/9
+## Preparing for RPI4 build
+- need to add MDN-SYSTEM package to buildroot
+- add vim or nano to buildroot
 
