@@ -6,7 +6,7 @@
 ##############################################################
 
 # Commit hash for repo with client (+ others as needed)
-MDN_SYSTEM_VERSION = 06e9fa39167d0fe85797b146e64ef24a50a30855	# 11/8/2026 commit		
+MDN_SYSTEM_VERSION = 11471c041dce34ad08b0964debaf00ec2d39537a	# 11/10/2026 commit		
 
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.

@@ -293,4 +293,18 @@ BR2_PACKAGE_HOST_GENIMAGE=y
 BR2_PACKAGE_HOST_MTOOLS=y
 BR2_PACKAGE_MDN_SYSTEM=y
 ```
-All of the above looks good. 
+- All of the above looks good. 
+
+- Initial build attempts failed to load ased_client onto the image. Failed with and error. 
+    It turns out that the aesd_client binary compiled for the VM was tracked by git. 
+    So, when Buildroot pulled the code, headers, etc. from the repo it apparently pulled the compiled binary and tried to load that intto the RPI4 image.
+    Apparently if there is a compiled binary, it doesn't compile it again. 
+    I was able to untrack the binary, then the build went smoothly. 
+
+### 11/11/2026 Testing new RPI4 image
+- boots up but have to manually start aesd_client b/c i hadn't added the start/stop script to the package .mk file
+- had to restart the network. not sure why
+    - the S40network file was not executable initially. not sure if this is the cause
+- after restarting the network it obtain ip addr 192.168.86.100.
+    - is this correct?
+- aesd_client ran and looked as expected when running it manually
