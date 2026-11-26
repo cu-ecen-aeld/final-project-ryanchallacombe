@@ -298,6 +298,7 @@ BR2_PACKAGE_MDN_SYSTEM=y
 - Initial build attempts failed to load ased_client onto the image. Failed with and error. 
     It turns out that the aesd_client binary compiled for the VM was tracked by git. 
     So, when Buildroot pulled the code, headers, etc. from the repo it apparently pulled the compiled binary and tried to load that intto the RPI4 image.
+    Make failed with 'nothing to do for 'all'' which makes sense now
     Apparently if there is a compiled binary, it doesn't compile it again. 
     I was able to untrack the binary, then the build went smoothly. 
 
@@ -308,3 +309,8 @@ BR2_PACKAGE_MDN_SYSTEM=y
 - after restarting the network it obtain ip addr 192.168.86.100.
     - is this correct?
 - aesd_client ran and looked as expected when running it manually
+
+### 11/12/2026
+- added start/stop script to the package .mk file
+- went into the rootfs overlay and set the S40network file to be executable.
+/home/ryan/projects/final-project-ryanchallacombe/base_external/rootfs_overlay/etc/init.d

@@ -6,7 +6,7 @@
 ##############################################################
 
 # Commit hash for repo with client (+ others as needed)
-MDN_SYSTEM_VERSION = 11471c041dce34ad08b0964debaf00ec2d39537a	# 11/10/2026 commit		
+MDN_SYSTEM_VERSION = f00e2cc1e58a60d75c7cc985e62cea41f777035c	# 11/24/2026 commit		
 
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
@@ -15,18 +15,21 @@ MDN_SYSTEM_SITE = git@github.com:ryanchallacombe/ecea5307-final-project.git
 MDN_SYSTEM_SITE_METHOD = git
 MDN_SYSTEM_GIT_SUBMODULES = YES
 MDN_SYSTEM_SUBDIRS += client
+CROSS_COMPILE_TB_SCRIPT_PATH = /aesd_client_include/tb_request.sh
+
+
 
 define MDN_SYSTEM_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/client all
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) CFLAGS="$(TARGET_CFLAGS) -DTB_SCRIPT_PATH=\"$(CROSS_COMPILE_TB_SCRIPT_PATH)\"" -C $(@D)/client all
 endef
 
 
 define MDN_SYSTEM_INSTALL_TARGET_CMDS
 
 	$(INSTALL) -m 0755 $(@D)/client/aesd_client $(TARGET_DIR)/usr/bin
-									
+	$(INSTALL) -m 0755 $(@D)/client/tb_request.sh $(TARGET_DIR)/aesd_client_include
+	$(INSTALL) -m 0755 $(@D)/client/client-start-stop.sh $(TARGET_DIR)/etc/init.d/S98client		
+								
 endef
-
-#	$(INSTALL) -m 0755 $(@D)/client/client-start-stop.sh $(TARGET_DIR)/etc/init.d/S98client
 
 $(eval $(generic-package))

@@ -4,3 +4,4 @@ build/
 *.log
 base_external/rootfs_overlay/etc/wpa_supplicant.conf
 documentation/textbelt/
+base_external/rootfs_overlay/aesd_client_include/text_belt_api_key.txt
